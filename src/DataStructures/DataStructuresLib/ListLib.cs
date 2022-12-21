@@ -17,6 +17,24 @@ namespace DataStructuresLib
             _count += 1;
         }
 
+        public void Insert(int index, T item)
+        {
+            GuaranteeSpace();
+
+            if (!IsValidPosition(index))
+            {
+                throw new ArgumentException("ArgumentOutOfRangeException: Index must be within the bounds of the List.");
+            } 
+
+            for (int i = _count-1; i >= index; i--)
+            {
+                tempList[i + 1] = tempList[i];
+            }
+
+            tempList[index] = item;
+            _count++;
+        }
+
         private void GuaranteeSpace()
         {
             if (_count == tempList.Length)
@@ -29,6 +47,11 @@ namespace DataStructuresLib
                 }
                 tempList = copyTempList;
             }
+        }
+
+        private bool IsValidPosition(int position)
+        {
+            return position >= 0 && position <= _count;
         }
     }
 }
