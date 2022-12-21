@@ -43,4 +43,15 @@ public class ListLibTests
         Assert.Equal("John", listLib[3]);
         Assert.Equal(4, quantityListLib);
     }
+    [Fact]
+    public void ListLib_Insert_ShouldReturnCorrectValueWhenInsertAnItemWithAIndex()
+    {
+        ListLib<string> listLib = new ListLib<string>();
+
+        listLib.Add("James");
+        listLib.Insert(0, "Brienne");
+
+        Assert.Equal("Brienne", listLib[0]);
+        Assert.Equal("James", listLib[1]);
+    }
 }
