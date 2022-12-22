@@ -6,7 +6,7 @@ namespace DataStructures.Tests;
 public class ListLibTests
 {
     [Fact]
-    public void ListLib_ShouldReturnZeroSizeWhenNothingIsAdded()
+    public void ListLib_ShouldReturnEmptyWhenToInstantiateEmpty()
     {
         ListLib<string> listLib = new ListLib<string>();
         Assert.Empty(listLib);
@@ -20,15 +20,13 @@ public class ListLibTests
         listLib.Add("Tyrion");
         listLib.Add("John");
 
-        var quantityListLib = listLib.Count;
-
         Assert.Equal("Tyrion", listLib[0]);
         Assert.Equal("John", listLib[1]);
-        Assert.Equal(2, quantityListLib);
+        Assert.Equal(2, listLib.Count);
     }
 
     [Fact]
-    public void ListLib_Add_MustGuaranteeSpaceWhenAddingManyItens()
+    public void ListLib_Add_MustGuaranteeSpaceWhenAddingManyItems()
     {
         ListLib<string> listLib = new ListLib<string>();
 
@@ -37,11 +35,9 @@ public class ListLibTests
         listLib.Add("Tyrion");
         listLib.Add("John");
 
-        var quantityListLib = listLib.Count;
-
         Assert.Equal("Cersei", listLib[0]);
         Assert.Equal("John", listLib[3]);
-        Assert.Equal(4, quantityListLib);
+        Assert.Equal(4, listLib.Count);
     }
     [Fact]
     public void ListLib_Insert_ShouldReturnCorrectValueWhenInsertAnItemWithAIndex()
@@ -53,15 +49,32 @@ public class ListLibTests
 
         Assert.Equal("Brienne", listLib[0]);
         Assert.Equal("James", listLib[1]);
+        Assert.True(listLib.Count.Equals(2));
     }
 
     [Fact]
-    public void ListLib_Clear_ShouldReturnAEMptyList()
+    public void ListLib_Clear_ShouldReturnAnEmptyList()
     {
-        ListLib<string> listLib = new ListLib<string>(){"James"};
+        ListLib<string> listLib = new ListLib<string>() { "James" };
 
         listLib.Clear();
 
         Assert.Empty(listLib);
+    }
+
+    [Fact]
+    public void ListLib_Contains_ShouldReturnTrueWhenFindsTheItemInTheList()
+    {
+        ListLib<string> listLib = new ListLib<string>() { "Arya", "Bran"};
+
+        Assert.True(listLib.Contains("Bran"));
+    }
+
+    [Fact]
+    public void ListLib_Contains_ShouldReturnFalseWhenItDoesntFindTheItemInTheList()
+    {
+        ListLib<string> listLib = new ListLib<string>() { "Arya"};
+
+        Assert.False(listLib.Contains("Bran"));
     }
 }
