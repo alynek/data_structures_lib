@@ -119,4 +119,20 @@ public class ListLibTests
         
         Assert.Throws<ArgumentNullException>(() => listLib.AddRange(hobbits));
     }
+
+    [Fact(DisplayName = "Remove an item of the list")]
+    public void ListLib_RemoveAt_ShouldRemoveAnItem()
+    {
+        listLib.Add("Tyrion");
+
+        listLib.RemoveAt(0);
+
+        Assert.True(listLib.Count == 0);
+    }
+
+    [Fact(DisplayName = "RemoveAt return an ArgumentOutOfRangeException")]
+    public void ListLib_RemoveAt_ShouldReturnAnExceptionWhenIsAnInvalidIndex()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => listLib.RemoveAt(0));
+    }
 }
