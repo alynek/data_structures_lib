@@ -73,6 +73,17 @@ namespace DataStructuresLib
             return -1;
         }
 
+        public void RemoveAt(int position)
+        {
+            if (!(position >= 0 && position <_count)) throw new ArgumentOutOfRangeException("Invalid index.");
+
+            for (int i = position; i < _count - 1; i++)
+            {
+                tempList[i] = tempList[i+1];
+            }
+            _count--;
+        }
+
         private void GuaranteeSpace()
         {
             if (_count == tempList.Length)
@@ -92,7 +103,7 @@ namespace DataStructuresLib
             return position >= 0 && position <= _count;
         }
 
-#region Methods for IEnumerable, IEnumerator
+        #region Methods for IEnumerable, IEnumerator
         public IEnumerator GetEnumerator()
         {
             return (IEnumerator)this;
@@ -112,6 +123,6 @@ namespace DataStructuresLib
         {
             get { return tempList[positionToMoveNext]; }
         }
-#endregion
+        #endregion
     }
 }
