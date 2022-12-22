@@ -5,14 +5,14 @@ namespace DataStructures.Tests;
 
 public class ListLibTests
 {
-    [Fact]
+    [Fact(DisplayName = "Instantiate an empty list")]
     public void ListLib_ShouldReturnEmptyWhenToInstantiateEmpty()
     {
         ListLib<string> listLib = new ListLib<string>();
         Assert.Empty(listLib);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Add itens to list")]
     public void ListLib_Add_ShouldReturnCorrectValuesWhenAddingAnItem()
     {
         ListLib<string> listLib = new ListLib<string>();
@@ -25,7 +25,7 @@ public class ListLibTests
         Assert.Equal(2, listLib.Count);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Resize list when adding items")]
     public void ListLib_Add_MustGuaranteeSpaceWhenAddingManyItems()
     {
         ListLib<string> listLib = new ListLib<string>();
@@ -39,7 +39,8 @@ public class ListLibTests
         Assert.Equal("John", listLib[3]);
         Assert.Equal(4, listLib.Count);
     }
-    [Fact]
+
+    [Fact(DisplayName = "Ensure insert at the beginning of the list")]
     public void ListLib_Insert_ShouldReturnCorrectValueWhenInsertAnItemWithAIndex()
     {
         ListLib<string> listLib = new ListLib<string>();
@@ -52,7 +53,7 @@ public class ListLibTests
         Assert.True(listLib.Count.Equals(2));
     }
 
-    [Fact]
+    [Fact(DisplayName = "Clear a non-empty list")]
     public void ListLib_Clear_ShouldReturnAnEmptyList()
     {
         ListLib<string> listLib = new ListLib<string>() { "James" };
@@ -62,7 +63,7 @@ public class ListLibTests
         Assert.Empty(listLib);
     }
 
-    [Fact]
+    [Fact (DisplayName = "Find an item in the list")]
     public void ListLib_Contains_ShouldReturnTrueWhenFindsTheItemInTheList()
     {
         ListLib<string> listLib = new ListLib<string>() { "Arya", "Bran"};
@@ -70,7 +71,7 @@ public class ListLibTests
         Assert.True(listLib.Contains("Bran"));
     }
 
-    [Fact]
+    [Fact(DisplayName= "Not find an item in the list")]
     public void ListLib_Contains_ShouldReturnFalseWhenItDoesntFindTheItemInTheList()
     {
         ListLib<string> listLib = new ListLib<string>() { "Arya"};
