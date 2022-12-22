@@ -1,3 +1,4 @@
+using System;
 using DataStructuresLib;
 using Xunit;
 
@@ -73,7 +74,7 @@ public class ListLibTests
         Assert.True(listLib.Contains("Bran"));
     }
 
-    [Fact(DisplayName= "Not find an item in the list")]
+    [Fact(DisplayName = "Not find an item in the list")]
     public void ListLib_Contains_ShouldReturnFalseWhenItDoesntFindTheItemInTheList()
     {
         listLib.Add("Arya");
@@ -81,7 +82,7 @@ public class ListLibTests
         Assert.False(listLib.Contains("Bran"));
     }    
 
-    [Fact]
+    [Fact(DisplayName = "Return an index of an item")]
     public void LisLib_IndexOf_ShouldReturnAnIndexOfAnItem()
     {
         listLib.Add("Sansa");
@@ -89,9 +90,33 @@ public class ListLibTests
         Assert.Equal(listLib.IndexOf("Sansa"), 0);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Return -1 because the item doesn't exists in the list")]
     public void LisLib_IndexOf_ShouldReturnMinusOneWhenItDoesntFindTheItem()
     {
         Assert.Equal(listLib.IndexOf("Sansa"), -1);
+    }
+
+    [Fact(DisplayName = "AddRange add a list inside another list")]
+    public void ListLib_AddRange_MustJoinTheTwoLists()
+    {
+        var hobbits = new ListLib<string>{"Bilbo", "Sam", "Frodo"};
+
+        listLib.Add("Tyrion");
+        listLib.Add("John");
+
+        listLib.AddRange(hobbits);
+
+        Assert.Equal(listLib.Count, 5);
+    }
+
+    [Fact(DisplayName = "AddRange return an ArgumentNullException")]
+    public void ListLib_AddRange_ShouldReturnExceptionWhenListIsNull()
+    {
+        ListLib<string> hobbits = null;
+
+        listLib.Add("Tyrion");
+        listLib.Add("John");
+        
+        Assert.Throws<ArgumentNullException>(() => listLib.AddRange(hobbits));
     }
 }
