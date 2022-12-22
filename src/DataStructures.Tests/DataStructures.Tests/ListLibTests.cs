@@ -9,7 +9,7 @@ public class ListLibTests
     public void ListLib_ShouldReturnZeroSizeWhenNothingIsAdded()
     {
         ListLib<string> listLib = new ListLib<string>();
-        Assert.True(listLib.Count.Equals(0));
+        Assert.Empty(listLib);
     }
 
     [Fact]
@@ -58,13 +58,10 @@ public class ListLibTests
     [Fact]
     public void ListLib_Clear_ShouldReturnAEMptyList()
     {
-        ListLib<string> listLib = new ListLib<string>();
-
-        listLib.Add("James");
-        listLib.Insert(1, "Brienne");
+        ListLib<string> listLib = new ListLib<string>(){"James"};
 
         listLib.Clear();
 
-        Assert.True(listLib.Count == 0);
+        Assert.Empty(listLib);
     }
 }

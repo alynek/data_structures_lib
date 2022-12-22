@@ -1,8 +1,11 @@
+using System.Collections;
+
 namespace DataStructuresLib
 {
-    public class ListLib<T> where T : class
+    public class ListLib<T> : IEnumerator, IEnumerable where T : class
     {
         private T[] tempList = new T[1];
+
         private int _count { get; set; } = 0;
         public int Count { get { return _count; } }
         public T this[int Count]
@@ -24,9 +27,9 @@ namespace DataStructuresLib
             if (!IsValidPosition(index))
             {
                 throw new ArgumentException("ArgumentOutOfRangeException: Index must be within the bounds of the List.");
-            } 
+            }
 
-            for (int i = _count-1; i >= index; i--)
+            for (int i = _count - 1; i >= index; i--)
             {
                 tempList[i + 1] = tempList[i];
             }
@@ -58,6 +61,25 @@ namespace DataStructuresLib
         private bool IsValidPosition(int position)
         {
             return position >= 0 && position <= _count;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return (IEnumerator)this;
+        }
+
+        public bool MoveNext()
+        {
+            _count++;
+            return (_count < tempList.Length);
+        }
+        public void Reset()
+        {
+            _count = -1;
+        }
+        public object Current
+        {
+            get { return tempList[_count]; }
         }
     }
 }
