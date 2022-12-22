@@ -44,6 +44,15 @@ namespace DataStructuresLib
             _count = 0;
         }
 
+        public bool Contains(T item)
+        {
+            foreach (var i in tempList)
+            {
+                if(i.Equals(item)) return true;
+            }
+            return false;
+        }
+
         private void GuaranteeSpace()
         {
             if (_count == tempList.Length)
