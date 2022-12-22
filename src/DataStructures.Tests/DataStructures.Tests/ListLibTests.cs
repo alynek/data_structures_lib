@@ -135,4 +135,18 @@ public class ListLibTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => listLib.RemoveAt(0));
     }
+
+    [Fact]
+    public void ListLib_Remove_ShouldReturnTrueWhenRemoveAnItem()
+    {
+        listLib.Add("Gandalf");
+        
+        Assert.True(listLib.Remove("Gandalf"));
+    }
+
+    [Fact]
+    public void ListLib_Remove_ShouldReturnFalseWhenNotRemovingAnItem()
+    {        
+        Assert.False(listLib.Remove("Gandalf"));
+    }
 }
