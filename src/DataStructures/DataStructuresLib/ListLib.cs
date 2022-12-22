@@ -4,7 +4,9 @@ namespace DataStructuresLib
 {
     public class ListLib<T> : IEnumerator, IEnumerable where T : class
     {
-        private T[] tempList = new T[1];
+        private T[] tempList = new T[0];
+
+        int positionToMoveNext = -1;
 
         private int _count { get; set; } = 0;
         public int Count { get { return _count; } }
@@ -80,16 +82,16 @@ namespace DataStructuresLib
 
         public bool MoveNext()
         {
-            _count++;
-            return (_count < tempList.Length);
+            positionToMoveNext++;
+            return (positionToMoveNext < tempList.Length);
         }
         public void Reset()
         {
-            _count = -1;
+            positionToMoveNext = -1;
         }
         public object Current
         {
-            get { return tempList[_count]; }
+            get { return tempList[positionToMoveNext]; }
         }
 #endregion
     }
