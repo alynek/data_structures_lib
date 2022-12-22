@@ -22,6 +22,15 @@ namespace DataStructuresLib
             _count += 1;
         }
 
+        public void AddRange(ListLib<T>  collection)
+        {
+            if(collection is null) throw new ArgumentNullException("collection is null.");
+            for(int i = 0; i < collection._count; i++)
+            {
+                Add(collection[i]);
+            }
+        }
+
         public void Insert(int index, T item)
         {
             GuaranteeSpace();
@@ -98,6 +107,7 @@ namespace DataStructuresLib
         {
             positionToMoveNext = -1;
         }
+
         public object Current
         {
             get { return tempList[positionToMoveNext]; }
