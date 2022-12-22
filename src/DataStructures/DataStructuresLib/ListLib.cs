@@ -75,13 +75,30 @@ namespace DataStructuresLib
 
         public void RemoveAt(int position)
         {
-            if (!(position >= 0 && position <_count)) throw new ArgumentOutOfRangeException("Invalid index.");
+            if (!IsAValidPosition(position)) throw new ArgumentOutOfRangeException("Invalid index.");
 
             for (int i = position; i < _count - 1; i++)
             {
                 tempList[i] = tempList[i+1];
             }
             _count--;
+        }
+
+        public bool Remove(T item)
+        {
+            for(int i = 0; i < _count; i++){
+                if(item.Equals(tempList[i]))
+                {
+                    RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool IsAValidPosition(int position)
+        {
+           return position >= 0 && position <_count;
         }
 
         private void GuaranteeSpace()
