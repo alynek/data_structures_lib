@@ -63,6 +63,7 @@ namespace DataStructuresLib
             return position >= 0 && position <= _count;
         }
 
+#region Methods for IEnumerable, IEnumerator
         public IEnumerator GetEnumerator()
         {
             return (IEnumerator)this;
@@ -81,5 +82,6 @@ namespace DataStructuresLib
         {
             get { return tempList[_count]; }
         }
+#endregion
     }
 }
