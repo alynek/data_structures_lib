@@ -5,18 +5,21 @@ namespace DataStructures.Tests;
 
 public class ListLibTests
 {
+    public ListLib<string> listLib;
+    public ListLibTests()
+    {
+        listLib = new ListLib<string>();
+    }
+
     [Fact(DisplayName = "Instantiate an empty list")]
     public void ListLib_ShouldReturnEmptyWhenToInstantiateEmpty()
     {
-        ListLib<string> listLib = new ListLib<string>();
         Assert.Empty(listLib);
     }
 
     [Fact(DisplayName = "Add itens to list")]
     public void ListLib_Add_ShouldReturnCorrectValuesWhenAddingAnItem()
     {
-        ListLib<string> listLib = new ListLib<string>();
-
         listLib.Add("Tyrion");
         listLib.Add("John");
 
@@ -28,8 +31,6 @@ public class ListLibTests
     [Fact(DisplayName = "Resize list when adding items")]
     public void ListLib_Add_MustGuaranteeSpaceWhenAddingManyItems()
     {
-        ListLib<string> listLib = new ListLib<string>();
-
         listLib.Add("Cersei");
         listLib.Add("Daenerys");
         listLib.Add("Tyrion");
@@ -43,8 +44,6 @@ public class ListLibTests
     [Fact(DisplayName = "Ensure insert at the beginning of the list")]
     public void ListLib_Insert_ShouldReturnCorrectValueWhenInsertAnItemWithAIndex()
     {
-        ListLib<string> listLib = new ListLib<string>();
-
         listLib.Add("James");
         listLib.Insert(0, "Brienne");
 
@@ -56,8 +55,6 @@ public class ListLibTests
     [Fact(DisplayName = "Clear a non-empty list")]
     public void ListLib_Clear_ShouldReturnAnEmptyList()
     {
-        ListLib<string> listLib = new ListLib<string>() { "James" };
-
         listLib.Clear();
 
         Assert.Empty(listLib);
@@ -66,7 +63,8 @@ public class ListLibTests
     [Fact (DisplayName = "Find an item in the list")]
     public void ListLib_Contains_ShouldReturnTrueWhenFindsTheItemInTheList()
     {
-        ListLib<string> listLib = new ListLib<string>() { "Arya", "Bran"};
+        listLib.Add("Arya");
+        listLib.Add("Bran");
 
         Assert.True(listLib.Contains("Bran"));
     }
@@ -74,7 +72,7 @@ public class ListLibTests
     [Fact(DisplayName= "Not find an item in the list")]
     public void ListLib_Contains_ShouldReturnFalseWhenItDoesntFindTheItemInTheList()
     {
-        ListLib<string> listLib = new ListLib<string>() { "Arya"};
+        listLib.Add("Arya");
 
         Assert.False(listLib.Contains("Bran"));
     }
