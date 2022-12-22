@@ -44,19 +44,23 @@ public class ListLibTests
     [Fact(DisplayName = "Ensure insert at the beginning of the list")]
     public void ListLib_Insert_ShouldReturnCorrectValueWhenInsertAnItemWithAIndex()
     {
-        listLib.Add("James");
+        listLib.Add("Jaime");
         listLib.Insert(0, "Brienne");
+        listLib.Insert(2, "Hodor");
 
         Assert.Equal("Brienne", listLib[0]);
-        Assert.Equal("James", listLib[1]);
-        Assert.True(listLib.Count.Equals(2));
+        Assert.Equal("Jaime", listLib[1]);
+        Assert.Equal("Hodor", listLib[2]);
+        Assert.True(listLib.Count.Equals(3));
     }
 
     [Fact(DisplayName = "Clear a non-empty list")]
     public void ListLib_Clear_ShouldReturnAnEmptyList()
     {
-        listLib.Clear();
+        listLib.Insert(0, "Jaime");
+        Assert.NotEmpty(listLib);
 
+        listLib.Clear();
         Assert.Empty(listLib);
     }
 
