@@ -54,4 +54,17 @@ public class ListLibTests
         Assert.Equal("Brienne", listLib[0]);
         Assert.Equal("James", listLib[1]);
     }
+
+    [Fact]
+    public void ListLib_Clear_ShouldReturnAEMptyList()
+    {
+        ListLib<string> listLib = new ListLib<string>();
+
+        listLib.Add("James");
+        listLib.Insert(1, "Brienne");
+
+        listLib.Clear();
+
+        Assert.True(listLib.Count == 0);
+    }
 }
