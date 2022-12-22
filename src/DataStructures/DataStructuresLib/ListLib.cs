@@ -55,6 +55,15 @@ namespace DataStructuresLib
             return false;
         }
 
+        public int IndexOf(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if(item.Equals(tempList[i])) return i;
+            }
+            return -1;
+        }
+
         private void GuaranteeSpace()
         {
             if (_count == tempList.Length)
