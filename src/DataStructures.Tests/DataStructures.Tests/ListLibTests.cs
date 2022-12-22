@@ -79,5 +79,19 @@ public class ListLibTests
         listLib.Add("Arya");
 
         Assert.False(listLib.Contains("Bran"));
+    }    
+
+    [Fact]
+    public void LisLib_IndexOf_ShouldReturnAnIndexOfAnItem()
+    {
+        listLib.Add("Sansa");
+
+        Assert.Equal(listLib.IndexOf("Sansa"), 0);
+    }
+
+    [Fact]
+    public void LisLib_IndexOf_ShouldReturnMinusOneWhenItDoesntFindTheItem()
+    {
+        Assert.Equal(listLib.IndexOf("Sansa"), -1);
     }
 }
