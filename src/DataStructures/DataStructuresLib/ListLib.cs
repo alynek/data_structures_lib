@@ -35,6 +35,12 @@ namespace DataStructuresLib
             _count++;
         }
 
+        public void Clear()
+        {
+            tempList = new T[1];
+            _count = 0;
+        }
+
         private void GuaranteeSpace()
         {
             if (_count == tempList.Length)
