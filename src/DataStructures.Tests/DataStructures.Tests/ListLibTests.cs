@@ -136,7 +136,7 @@ public class ListLibTests
         Assert.Throws<ArgumentOutOfRangeException>(() => listLib.RemoveAt(0));
     }
 
-    [Fact]
+    [Fact(DisplayName = "Remove an item")]
     public void ListLib_Remove_ShouldReturnTrueWhenRemoveAnItem()
     {
         listLib.Add("Gandalf");
@@ -144,9 +144,77 @@ public class ListLibTests
         Assert.True(listLib.Remove("Gandalf"));
     }
 
-    [Fact]
+    [Fact(DisplayName = "Does not remove when it does not find an item")]
     public void ListLib_Remove_ShouldReturnFalseWhenNotRemovingAnItem()
     {        
         Assert.False(listLib.Remove("Gandalf"));
+    }
+
+    [Fact(DisplayName = "Remove two items starting from index 2")]
+    public void ListLib_RemoveRange_ShouldRemoveTwoItemsFromTheIndexTwo()
+    {        
+        listLib.Add("Sauron");
+        listLib.Add("Arwen");
+        listLib.Add("Galadriel");
+        listLib.Add("Gollum");
+
+        listLib.RemoveRange(2, 2);
+
+        Assert.True(listLib.Count == 2);
+        Assert.True(listLib[0] == "Sauron");
+        Assert.True(listLib[1] == "Arwen");
+    }
+
+    [Fact(DisplayName = "Remove an item from the last index")]
+    public void ListLib_RemoveRange_ShouldRemoveTwoItensFromTheLastIndex()
+    {        
+        listLib.Add("Sauron");
+        listLib.Add("Arwen");
+        listLib.Add("Galadriel");
+        listLib.Add("Gollum");
+
+        listLib.RemoveRange(3, 1);
+
+        Assert.True(listLib.Count == 3);
+        Assert.True(listLib[0] == "Sauron");
+        Assert.True(listLib[1] == "Arwen");
+        Assert.True(listLib[2] == "Galadriel");
+    }
+
+    [Fact(DisplayName = "Remove two items from the first index")]
+    public void ListLib_RemoveRange_ShouldRemoveTwoItensFromTheFirstIndex()
+    {        
+        listLib.Add("Sauron");
+        listLib.Add("Arwen");
+        listLib.Add("Galadriel");
+        listLib.Add("Gollum");
+
+        listLib.RemoveRange(0, 2);
+
+        Assert.True(listLib.Count == 2);
+        Assert.True(listLib[0] == "Galadriel");
+        Assert.True(listLib[1] == "Gollum");
+    }
+
+    [Fact(DisplayName = "Return an ArgumentOutOfRangeException when count is invalid")]
+    public void ListLib_RemoveRange_ShouldReturnAnExceptionWhenCountIsGreaterThanListCount()
+    {        
+        listLib.Add("Sauron");
+        listLib.Add("Arwen");
+        listLib.Add("Galadriel");
+        listLib.Add("Gollum");
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => listLib.RemoveRange(2, 4));
+    }
+
+    [Fact(DisplayName = "Return an ArgumentOutOfRangeException when index is invalid")]
+    public void ListLib_RemoveRange_ShouldReturnAnExceptionWhenIndexIsInvalid()
+    {        
+        listLib.Add("Sauron");
+        listLib.Add("Arwen");
+        listLib.Add("Galadriel");
+        listLib.Add("Gollum");
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => listLib.RemoveRange(4, 2));
     }
 }
