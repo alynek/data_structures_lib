@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace DataStructuresLib
 {
-    public class ListLib<T> : IEnumerator, IEnumerable where T : class
+    public class ListLib<T> : IEnumerator, IEnumerable
     {
         private T[] tempList = new T[0];
 
@@ -106,6 +106,19 @@ namespace DataStructuresLib
             {
                 RemoveAt(i);
             }
+        }
+
+        public void Reverse()
+        {
+            T[] copyTempList = new T[_count];
+
+            int first, last;
+
+            for(first = 0, last = _count-1; first < _count || last >= 0; first++, last--)
+            {
+                copyTempList[first] = tempList[last];
+            }
+            tempList = copyTempList;
         }
 
         private bool IsAValidAmount(uint count)
