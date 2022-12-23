@@ -217,4 +217,34 @@ public class ListLibTests
 
         Assert.Throws<ArgumentOutOfRangeException>(() => listLib.RemoveRange(4, 2));
     }
+
+    [Fact(DisplayName = "Return a Reverse list of strings")]
+    public void ListLib_Reverse_ShouldReturnAReverseListOfStrings()
+    {        
+        listLib.Add("Sauron");
+        listLib.Add("Arwen");
+        listLib.Add("Galadriel");
+        listLib.Add("Gollum");
+
+        var expectedList = new ListLib<string>{"Gollum", "Galadriel",
+        "Arwen", "Sauron"};
+
+        listLib.Reverse();
+
+        Assert.True(listLib.Count == 4);
+        Assert.Equal(expectedList, listLib);
+    }
+
+    [Fact(DisplayName = "Return a Reverse list of integers")]
+    public void ListLib_Reverse_ShouldReturnAReverseListOfIntegers()
+    {      
+        var listLib = new ListLib<uint>{1, 2, 3, 4, 5}; 
+
+        var expectedList = new ListLib<uint>{5, 4, 3, 2, 1};
+
+        listLib.Reverse();
+
+        Assert.True(listLib.Count == 5);
+        Assert.Equal(expectedList, listLib);
+    }
 }
