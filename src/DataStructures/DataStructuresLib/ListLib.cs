@@ -73,11 +73,11 @@ namespace DataStructuresLib
             return -1;
         }
 
-        public void RemoveAt(int position)
+        public void RemoveAt(uint position)
         {
             if (!IsAValidPosition(position)) throw new ArgumentOutOfRangeException("Invalid index.");
 
-            for (int i = position; i < _count - 1; i++)
+            for (uint i = position; i < _count - 1; i++)
             {
                 tempList[i] = tempList[i+1];
             }
@@ -86,7 +86,7 @@ namespace DataStructuresLib
 
         public bool Remove(T item)
         {
-            for(int i = 0; i < _count; i++){
+            for(uint i = 0; i < _count; i++){
                 if(item.Equals(tempList[i]))
                 {
                     RemoveAt(i);
@@ -96,7 +96,24 @@ namespace DataStructuresLib
             return false;
         }
 
-        private bool IsAValidPosition(int position)
+        public void RemoveRange(uint index, uint count)
+        {
+            if((!IsAValidPosition(index)) & (!IsAValidAmount(count))) throw new ArgumentOutOfRangeException("Invalid index");
+
+            uint rangeSum = index+count;
+
+            for(uint i = index; i < rangeSum; rangeSum--)
+            {
+                RemoveAt(i);
+            }
+        }
+
+        private bool IsAValidAmount(uint count)
+        {
+            return count > 1 && count <=_count;
+        }
+
+        private bool IsAValidPosition(uint position)
         {
            return position >= 0 && position <_count;
         }
