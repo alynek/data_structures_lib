@@ -68,5 +68,31 @@ namespace DataStructures.Tests
             Assert.Equal("Pop!_OS", linkedList.First.Value);
             Assert.Equal("Pop!_OS", linkedList.Last.Value);
         }
+
+        [Fact(DisplayName = "Contains with empty list")]
+        public void LinkedListLib_Contains_ShouldReturnFalseWhenTheLinkedListIsEmpty()
+        {
+            LinkedListLib<string> linkedList = new LinkedListLib<string>();
+
+            Assert.False(linkedList.Contains("Ubuntu"));
+        }
+
+        [Fact(DisplayName = "Contains with non-empty list")]
+        public void LinkedListLib_Contains_ShouldReturnTrueWhenTheLinkedListIsNotEmpty()
+        {
+            LinkedListLib<string> linkedList = new LinkedListLib<string>();
+            linkedList.AddFirst("Ubuntu");
+
+            Assert.True(linkedList.Contains("Ubuntu"));
+        }
+
+        [Fact(DisplayName = "Contains does not match with non-empty list")]
+        public void LinkedListLib_Contains_ShouldReturnFalseWhenNotFoundAnItem()
+        {
+            LinkedListLib<string> linkedList = new LinkedListLib<string>();
+            linkedList.AddFirst("Debian");
+
+            Assert.False(linkedList.Contains("Ubuntu"));
+        }
     }
 }
