@@ -40,5 +40,19 @@ namespace DataStructuresLib
                 return this;
             } 
         }
+
+        //O(n) - linear search
+        public bool Contains(T value)
+        {
+            Node<T> firstNode = this.First;
+
+            while(firstNode != null){
+                if(firstNode.Value.Equals(value)){
+                    return true;
+                }
+                firstNode = firstNode.Next;
+            }
+            return false;
+        }
     }
 }
