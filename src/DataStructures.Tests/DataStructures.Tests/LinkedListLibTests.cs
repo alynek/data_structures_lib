@@ -5,11 +5,15 @@ namespace DataStructures.Tests
 {
     public class LinkedListLibTests
     {
+        public LinkedListLib<string> linkedList;
+        public LinkedListLibTests()
+        {
+            linkedList = new LinkedListLib<string>();
+        }
+
         [Fact(DisplayName = "Add first with empty list")]
         public void LinkedListLib_AddFirst_AddAtBeginningWhenTheLinkedListIsEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             linkedList.AddFirst("Debian");
 
             Assert.True(linkedList.Count == 1);
@@ -20,8 +24,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Add first with non-empty list")]
         public void LinkedListLib_AddFirst_AddAtBeginningWhenTheLinkedListIsNotEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             linkedList.AddFirst("Linux Mint");
             linkedList.AddFirst("Arch");
 
@@ -33,8 +35,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Add Last with non-empty list")]
         public void LinkedListLib_AddLast_AddAtTheEndWhenTheLinkedListIsNotEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             linkedList.AddLast("Fedora");
             linkedList.AddLast("Slackware");
 
@@ -46,8 +46,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Add Last and Add First with non-empty list")]
         public void LinkedListLib_AddLast_AddAtTheEndAndTheBeginningWhenTheLinkedListIsNotEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             linkedList.AddLast("Fedora");
             linkedList.AddLast("Slackware");
             linkedList.AddFirst("Arch");
@@ -60,8 +58,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Add Last with empty list")]
         public void LinkedListLib_AddLast_AddAtTheEndWhenTheLinkedListIsEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             linkedList.AddLast("Pop!_OS");
 
             Assert.True(linkedList.Count == 1);
@@ -72,15 +68,12 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Contains with empty list")]
         public void LinkedListLib_Contains_ShouldReturnFalseWhenTheLinkedListIsEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             Assert.False(linkedList.Contains("Ubuntu"));
         }
 
         [Fact(DisplayName = "Contains with non-empty list")]
         public void LinkedListLib_Contains_ShouldReturnTrueWhenTheLinkedListIsNotEmpty()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
             linkedList.AddFirst("Ubuntu");
 
             Assert.True(linkedList.Contains("Ubuntu"));
@@ -89,7 +82,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Contains does not match with non-empty list")]
         public void LinkedListLib_Contains_ShouldReturnFalseWhenNotFoundAnItem()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
             linkedList.AddFirst("Debian");
 
             Assert.False(linkedList.Contains("Ubuntu"));
@@ -98,7 +90,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Find method return a valid Node")]
         public void LinkedListLib_Find_ShouldReturnAnExistingNode()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
             linkedList.AddFirst("RedHat");
 
             var element = linkedList.Find("RedHat");
@@ -109,8 +100,6 @@ namespace DataStructures.Tests
         [Fact(DisplayName = "Find method return a null Node")]
         public void LinkedListLib_Find_ShouldReturnNullWhenNotFindTheElement()
         {
-            LinkedListLib<string> linkedList = new LinkedListLib<string>();
-
             var element = linkedList.Find("RedHat");
 
             Assert.Null(element?.Value);
