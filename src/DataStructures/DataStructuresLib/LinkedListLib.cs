@@ -54,5 +54,18 @@ namespace DataStructuresLib
             }
             return false;
         }
+
+        public Node<T> Find(T value)
+        {
+            Node<T> firstNode = this.First;
+
+            while(firstNode != null){
+                if(firstNode.Value.Equals(value)){
+                    return firstNode;
+                }
+                firstNode = firstNode.Next;
+            }
+            return null;
+        }
     }
 }
