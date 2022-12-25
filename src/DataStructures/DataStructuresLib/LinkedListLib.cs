@@ -55,6 +55,7 @@ namespace DataStructuresLib
             return false;
         }
 
+        //O(n) - linear search
         public Node<T> Find(T value)
         {
             Node<T> firstNode = this.First;
@@ -66,6 +67,25 @@ namespace DataStructuresLib
                 firstNode = firstNode.Next;
             }
             return null;
+        }
+
+        public void RemoveFirst()
+        {
+            if(!this.isAValidIndex(0)){
+                throw new InvalidOperationException("The LinkedList<T> is empty.");
+            }
+
+            _first = _first.Next;
+            _count --;
+
+            if(_count == 0){
+                _first = null;
+            }
+        }
+
+        private bool isAValidIndex(int index)
+        {
+            return index >= 0 && index < _count;
         }
     }
 }
