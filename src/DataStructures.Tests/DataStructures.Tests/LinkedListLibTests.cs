@@ -104,5 +104,26 @@ namespace DataStructures.Tests
 
             Assert.Null(element?.Value);
         }
+
+        [Fact(DisplayName = "Remove from the beginning and make the list empty")]
+        public void LinkedListLib_RemoveFirst_ShouldRemoveElementWhenListHasOneElement()
+        {
+            linkedList.AddFirst("Kurumin");
+            linkedList.RemoveFirst();
+
+            Assert.Null(linkedList.First);
+            Assert.True(linkedList.Count.Equals(0));
+        }
+
+        [Fact(DisplayName = "Remove from the beginning")]
+        public void LinkedListLib_RemoveFirst_ShouldRemoveElementWhenListHasMoreThanOneElement()
+        {
+            linkedList.AddFirst("Kali linux");
+            linkedList.AddFirst("Alpine");
+            linkedList.RemoveFirst();
+
+            Assert.True(linkedList.First.Value == "Kali linux");
+            Assert.True(linkedList.Count.Equals(1));
+        }
     }
 }
