@@ -94,5 +94,26 @@ namespace DataStructures.Tests
 
             Assert.False(linkedList.Contains("Ubuntu"));
         }
+
+        [Fact(DisplayName = "Find method return a valid Node")]
+        public void LinkedListLib_Find_ShouldReturnAnExistingNode()
+        {
+            LinkedListLib<string> linkedList = new LinkedListLib<string>();
+            linkedList.AddFirst("RedHat");
+
+            var element = linkedList.Find("RedHat");
+
+            Assert.NotNull(element.Value);
+        }
+
+        [Fact(DisplayName = "Find method return a null Node")]
+        public void LinkedListLib_Find_ShouldReturnNullWhenNotFindTheElement()
+        {
+            LinkedListLib<string> linkedList = new LinkedListLib<string>();
+
+            var element = linkedList.Find("RedHat");
+
+            Assert.Null(element?.Value);
+        }
     }
 }
