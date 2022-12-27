@@ -1,3 +1,4 @@
+using System;
 using DataStructuresLib;
 using Xunit;
 
@@ -124,6 +125,35 @@ namespace DataStructures.Tests
 
             Assert.True(linkedList.First.Value == "Kali linux");
             Assert.True(linkedList.Count.Equals(1));
+        }
+
+        [Fact(DisplayName = "Remove from the Last and make the list empty")]
+        public void LinkedListLib_RemoveLast_ShouldRemoveElementWhenListHasOneElement()
+        {
+            linkedList.AddFirst("Mandriva linux");
+            linkedList.RemoveLast();
+
+            Assert.Null(linkedList.First);
+            Assert.True(linkedList.Count.Equals(0));
+        }
+
+        [Fact(DisplayName = "Remove from the Last")]
+        public void LinkedListLib_RemoveLast_ShouldRemoveElementWhenListHasMoreThanOneElement()
+        {
+            linkedList.AddFirst("Mandriva linux");
+            linkedList.AddFirst("OpenSUSE");
+            linkedList.AddFirst("Mageia");
+            linkedList.RemoveLast();
+
+            Assert.True(linkedList.First.Value == "Mageia");
+            Assert.True(linkedList.Last.Value == "OpenSUSE");
+            Assert.True(linkedList.Count.Equals(2));
+        }
+
+        [Fact(DisplayName = "Removing from the end causes an InvalidOperationException")]
+        public void LinkedListLib_RemoveLast_ShouldReturnAnExceptionWhenListIsEmpty()
+        {
+            Assert.Throws<InvalidOperationException>(() => linkedList.RemoveLast());
         }
     }
 }
