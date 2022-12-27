@@ -83,6 +83,32 @@ namespace DataStructuresLib
             }
         }
 
+        public void RemoveLast()
+        {
+            if(!this.isAValidIndex(0)){
+                throw new InvalidOperationException("The LinkedList<T> is empty.");
+            }
+
+            if(_count == 1){
+                RemoveFirst();
+                return;
+            }
+
+            else{
+                Node<T> prevNode = _first;
+                Node<T> newNode = prevNode.Next;
+
+                while(newNode.Next is not null)
+                {
+                    prevNode = prevNode.Next;
+                    newNode = newNode.Next;
+                }
+                prevNode.Next = null;
+                _last = prevNode;
+                _count --;
+            }
+        }
+
         private bool isAValidIndex(int index)
         {
             return index >= 0 && index < _count;
