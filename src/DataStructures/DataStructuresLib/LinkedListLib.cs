@@ -109,6 +109,64 @@ namespace DataStructuresLib
             }
         }
 
+        //O(n)
+        public bool Remove(T value)
+        {
+            if(_count == 0) return false;
+
+            Node<T> currentNode = _first;
+            Node<T> prevNode = _first;
+            
+            (bool wasFound, int index) = findItem(currentNode, value);
+            bool needToRemove = index > 0 & index < _count-1;
+
+            if(wasFound && needToRemove)
+            {
+                for(int i = 0; i < index-1; ++i)
+                {
+                    prevNode = prevNode.Next;
+                }
+
+                Node<T> node = prevNode.Next; //The node i want to delete
+                Node<T> nextNode = node.Next; // The next pointer of the node i want to delete
+                prevNode.Next = nextNode; //Set the next of previous node with the next node
+                _count--;
+
+                return true;
+            }
+            return wasFound;            
+        }
+
+        private (bool, int) findItem(Node<T> currentNode, T value)
+        {
+            int index = 0;
+
+            for(int i = 0; i < _count; i++)
+            {
+                if(currentNode.Value.Equals(value))
+                {
+                    index = i;
+
+                    if(index == 0)
+                    {
+                        RemoveFirst();
+                        return (true, index);
+                    }
+                    else if(index == _count-1)
+                    {
+                        RemoveLast();
+                        return (true, index);
+                    }
+                    else
+                    {
+                        return (true, index);
+                    }
+                }
+                currentNode = currentNode.Next;
+            }
+            return (false, index);
+        }
+
         private bool isAValidIndex(int index)
         {
             return index >= 0 && index < _count;
