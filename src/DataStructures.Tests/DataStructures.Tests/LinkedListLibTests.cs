@@ -155,5 +155,71 @@ namespace DataStructures.Tests
         {
             Assert.Throws<InvalidOperationException>(() => linkedList.RemoveLast());
         }
+
+        [Fact(DisplayName = "Remove return false when list is empty")]
+        public void LinkedListLib_Remove_ShouldReturnFalseWhenListIsEmpty()
+        {
+
+            var isRemoved = linkedList.Remove("Minix");
+            Assert.False(isRemoved);
+            Assert.True(linkedList.Count == 0);
+        }
+
+        [Fact(DisplayName = "Remove return false when not found an item")]
+        public void LinkedListLib_Remove_ShouldReturnFalseWhenNotFindAnItem()
+        {
+            linkedList.AddFirst("Gentoo");
+            var isRemoved = linkedList.Remove("Minix");
+            Assert.False(isRemoved);
+            Assert.True(linkedList.Count == 1);
+        }
+
+        [Fact(DisplayName = "Remove return true and clears list")]
+        public void LinkedListLib_Remove_ShouldReturnTrueWhenFindAnItemAndClearsTheList()
+        {
+            linkedList.AddFirst("Gentoo");
+            var isRemoved = linkedList.Remove("Gentoo");
+            Assert.True(isRemoved);
+            Assert.True(linkedList.Count == 0);
+        }
+
+        [Fact(DisplayName = "Remove return true when find an item in the middle")]
+        public void LinkedListLib_Remove_ShouldReturnTrueWhenFindAnItemInTheMiddle()
+        {
+            linkedList.AddFirst("Gentoo");
+            linkedList.AddLast("Ubuntu");
+            linkedList.AddLast("Linux Mint");
+
+            var isRemoved = linkedList.Remove("Ubuntu");
+
+            Assert.True(isRemoved);
+            Assert.True(linkedList.Count == 2);
+        }
+
+        [Fact(DisplayName = "Remove return true when find an item at the beginning")]
+        public void LinkedListLib_Remove_ShouldReturnTrueWhenFindAnItemAtTheBeginning()
+        {
+            linkedList.AddFirst("Gentoo");
+            linkedList.AddLast("Ubuntu");
+            linkedList.AddLast("Linux Mint");
+
+            var isRemoved = linkedList.Remove("Gentoo");
+
+            Assert.True(isRemoved);
+            Assert.True(linkedList.Count == 2);
+        }
+
+        [Fact(DisplayName = "Remove return true when find an item at the end")]
+        public void LinkedListLib_Remove_ShouldReturnTrueWhenFindAnItemAtTheEnd()
+        {
+            linkedList.AddFirst("Gentoo");
+            linkedList.AddLast("Ubuntu");
+            linkedList.AddLast("Linux Mint");
+
+            var isRemoved = linkedList.Remove("Linux Mint");
+
+            Assert.True(isRemoved);
+            Assert.True(linkedList.Count == 2);
+        }
     }
 }
