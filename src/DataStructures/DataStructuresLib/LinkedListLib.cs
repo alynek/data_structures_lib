@@ -109,7 +109,7 @@ namespace DataStructuresLib
             }
         }
 
-        //O(n)
+        //O(n) - linear search
         public bool Remove(T value)
         {
             if(_count == 0) return false;
@@ -135,6 +135,29 @@ namespace DataStructuresLib
                 return true;
             }
             return wasFound;            
+        }
+
+        public void Clear()
+        {
+            if (_count == 0) return;
+
+            Node<T> firstNode = _first;
+            Node<T> nextNode = firstNode.Next;
+
+            //Removing pointers
+            while(nextNode is not null)
+            {
+                Node<T> tempNode = firstNode;
+                firstNode = firstNode.Next;
+                tempNode = null;
+                nextNode = nextNode.Next ?? null;
+                _count--;
+            }
+
+            firstNode = null;
+            _first= null;
+            _last = null;
+            _count--;
         }
 
         private (bool, int) findItem(Node<T> currentNode, T value)
