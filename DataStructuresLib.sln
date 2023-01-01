@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{11B207D0-737B-4684-8D38-38D9030ACAEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStructures", "{411C4DAD-C500-41B1-BA7E-61F599485A47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresLib", "src\DataStructures\DataStructuresLib\DataStructuresLib.csproj", "{0F745611-3E8B-4082-9FB5-35CFE56FF3B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures.Tests", "DataStructures.Tests", "{CE78D64F-EFAA-4151-B234-E84F6192F413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Tests", "src\DataStructures.Tests\DataStructures.Tests\DataStructures.Tests.csproj", "{4A9E003A-05B5-4B74-9656-2A6E1EE5BB1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F745611-3E8B-4082-9FB5-35CFE56FF3B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F745611-3E8B-4082-9FB5-35CFE56FF3B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F745611-3E8B-4082-9FB5-35CFE56FF3B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F745611-3E8B-4082-9FB5-35CFE56FF3B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A9E003A-05B5-4B74-9656-2A6E1EE5BB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A9E003A-05B5-4B74-9656-2A6E1EE5BB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A9E003A-05B5-4B74-9656-2A6E1EE5BB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A9E003A-05B5-4B74-9656-2A6E1EE5BB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{411C4DAD-C500-41B1-BA7E-61F599485A47} = {11B207D0-737B-4684-8D38-38D9030ACAEF}
+		{0F745611-3E8B-4082-9FB5-35CFE56FF3B6} = {411C4DAD-C500-41B1-BA7E-61F599485A47}
+		{CE78D64F-EFAA-4151-B234-E84F6192F413} = {11B207D0-737B-4684-8D38-38D9030ACAEF}
+		{4A9E003A-05B5-4B74-9656-2A6E1EE5BB1E} = {CE78D64F-EFAA-4151-B234-E84F6192F413}
+	EndGlobalSection
+EndGlobal
