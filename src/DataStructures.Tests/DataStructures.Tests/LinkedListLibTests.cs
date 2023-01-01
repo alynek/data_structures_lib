@@ -221,5 +221,29 @@ namespace DataStructures.Tests
             Assert.True(isRemoved);
             Assert.True(linkedList.Count == 2);
         }
+
+        [Fact(DisplayName = "Clear return true when clear the list")]
+        public void LinkedListLib_Clear_ShouldReturnTrueWhenClearTheList()
+        {
+            linkedList.AddFirst("Gentoo");
+            linkedList.AddLast("Ubuntu");
+            linkedList.AddLast("Linux Mint");
+
+            linkedList.Clear();
+
+            Assert.True(linkedList.Count == 0);
+            Assert.True(linkedList.First == null);
+            Assert.True(linkedList.Last == null);
+        }
+
+        [Fact(DisplayName = "Clear not return error when list is empty")]
+        public void LinkedListLib_Clear_ShouldNotReturnErrorWhenListIsEmpty()
+        {
+            linkedList.Clear();
+
+            Assert.True(linkedList.Count == 0);
+            Assert.True(linkedList.First == null);
+            Assert.True(linkedList.Last == null);
+        }
     }
 }
